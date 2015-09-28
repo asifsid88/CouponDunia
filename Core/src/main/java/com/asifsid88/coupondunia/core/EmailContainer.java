@@ -12,23 +12,61 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Email Container: Where email will be populated from DB and will be consumed by Mail Server
+ *
+ * This container can be made more Generic, by passing `raw-type` to it. But for sake of brevity it is made
+ * specifically `Email` object container
  */
 @Component
 @Log4j2
 public class EmailContainer {
 
+    /*
+    BlockingQueue is used to ensure `concurrency`
+     */
     private BlockingQueue<Email> emailPool = new LinkedBlockingDeque<Email>();
 
-    public void putEmail(Email email) {
+    /*
+    Whenever producer adds in pool, it will check whether consumer is already consuming existing mails
+    If not then, it will ask container to notify consumer
+     */
+    private boolean isConsumed;
+
+    private List<EmailContainerObserver> containerObserverList = new LinkedList<EmailContainerObserver>();
+
+    public void register(EmailContainerObserver observer) {
+        containerObserverList.add(observer);
+    }
+
+    public void setIsConsumed(boolean isConsumed) {
+        this.isConsumed = isConsumed;
+    }
+
+    public boolean isConsumed() {
+        return this.isConsumed;
+    }
+
+    public int poolSize() {
+        return emailPool.size();
+    }
+
+    public void putEmail(Email email, EmailContainerObserver observer) {
         if(email != null) {
             emailPool.add(email);
         }
+        /*
+        New value is available in pool. Notify consumers
+         */
+        notifyObservers(observer);
     }
 
-    public void putEmailList(List<Email> emailList) {
+    public void putEmailList(List<Email> emailList, EmailContainerObserver observer) {
         if(emailList!=null && emailList.size()>0) {
             emailPool.addAll(emailList);
         }
+        /*
+        New value is available in pool. Notify consumers
+         */
+        notifyObservers(observer);
     }
 
     /**
@@ -65,5 +103,24 @@ public class EmailContainer {
      */
     public List<Email> takeEmailList() {
         return takeEmailListBySize(ConfigValues.numberOfEmailsToSend);
+    }
+
+    /*
+    Notify consumers to take value from pool
+     */
+    private void notifyObservers(EmailContainerObserver observer) {
+        /*
+        Check whether consumer is also feeding from pool
+         */
+        if(!isConsumed()) {
+            for(EmailContainerObserver containerObserver : containerObserverList) {
+                /*
+                Notify all the consumers but one which invoked (producer)
+                 */
+                if(!observer.getName().equals(containerObserver.getName())) {
+                    containerObserver.trigger();
+                }
+            }
+        }
     }
 }
