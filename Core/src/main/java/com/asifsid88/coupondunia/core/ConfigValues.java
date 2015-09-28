@@ -14,5 +14,5 @@ public interface ConfigValues {
     int numberOfEmailsToGetFromDB = 500;
 
     // Wait for number of seconds before checking DB (used by producer)- Default: 5 seconds
-    int waitToCheckMailFromDB = 5000;   // 5 seconds
+    int waitToCheckMailFromDB = 5000;
 }

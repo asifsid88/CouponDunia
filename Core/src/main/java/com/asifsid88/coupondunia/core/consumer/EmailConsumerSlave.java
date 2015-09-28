@@ -11,17 +11,24 @@ import java.util.List;
  * It uses MailServer Client and sends mail
  */
 @Log4j2
-public class EmailConsumerSlave {
+public class EmailConsumerSlave implements Runnable {
     private List<Email> emailList;
     private MailServerDelegate mailServer;
+
+    private Thread thread;
 
     public EmailConsumerSlave(MailServerDelegate mailServer, List<Email> emailList) {
         this.mailServer = mailServer;
         this.emailList = emailList;
+        this.thread = new Thread(this);
     }
 
     public void send() {
-        log.trace("EmailConsumerSlave: Sending {} Mail", emailList.size());
+        this.thread.start();
+    }
+
+    public void run() {
+        log.info("EmailConsumerSlave Thread started: Sending {} Mail", emailList.size());
         mailServer.sendBulkMail(emailList);
     }
 }

@@ -55,38 +55,60 @@ public class EmailConsumerMaster implements EmailContainerObserver {
           */
         container.setIsConsumed(Boolean.TRUE);
 
-        createSlave();
-
         /*
-        After clearing pool, set `isConsumed` Flag to FALSE
+        Create Slave Thread- why Thread? So that Consumer will be busy in eating and Producer will keep on populating more data
+        in the pool. This will ensure producer is not blocked until consumer finishes. Hence we achieve simultaneous population of
+        pool and consumption of pool
          */
-        container.setIsConsumed(Boolean.FALSE);
-    }
-
-    private void createSlave() {
-        /*
-        As long as there is an object in pool, eat it
-         */
-        int nbEmailFromPool;
-        do {
-            /*
-            This is ensuring to take only 300 (configurable) objects at once
-             */
-            List<Email> emailList = container.takeEmailListBySize(ConfigValues.numberOfEmailsToSend);
-            nbEmailFromPool = emailList.size();
-            log.info("Number of email objects fetch from pool: {}", nbEmailFromPool);
-
-            /*
-            If no object is remaining then don't create SLAVE
-             */
-            if(nbEmailFromPool > 0) {
-                log.info("Creating EmailConsumerSlave to send {} mails", emailList.size());
-                new EmailConsumerSlave(mailServer, emailList).send();
-            }
-        } while(nbEmailFromPool != 0);
+        new CreateSlave().create();
     }
 
     public String getName() {
         return "emailConsumerMaster";
+    }
+
+    private class CreateSlave implements Runnable {
+        private Thread thread;
+        public CreateSlave() {
+            this.thread = new Thread(this, "CreateSlaveThread");
+        }
+
+        public void create() {
+            this.thread.start();
+        }
+
+        public void run() {
+            log.info("CreateSlave thread started");
+            createSlaveThreads();
+
+            /*
+            After clearing pool, set `isConsumed` Flag to FALSE
+             */
+            container.setIsConsumed(Boolean.FALSE);
+            log.info("Pool is emptied. Setting isConsumed to FALSE. Terminating Consumer!");
+        }
+
+        private void createSlaveThreads() {
+            /*
+            As long as there is an object in pool, eat it
+             */
+            int nbEmailFromPool;
+            do {
+                /*
+                This is ensuring to take only 300 (configurable) objects at once
+                 */
+                List<Email> emailList = container.takeEmailListBySize(ConfigValues.numberOfEmailsToSend);
+                nbEmailFromPool = emailList.size();
+                log.info("Number of email objects fetch from pool: {}", nbEmailFromPool);
+
+                /*
+                If no object is remaining then don't create SLAVE
+                 */
+                if(nbEmailFromPool > 0) {
+                    log.info("Creating EmailConsumerSlave Thread to send {} mails", emailList.size());
+                    new EmailConsumerSlave(mailServer, emailList).send();
+                }
+            } while(nbEmailFromPool != 0);
+        }
     }
 }

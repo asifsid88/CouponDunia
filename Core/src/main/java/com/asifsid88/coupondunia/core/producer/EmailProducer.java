@@ -57,7 +57,6 @@ public class EmailProducer implements EmailContainerObserver, Runnable {
         log.info("{} emails fetch from DB", emailList.size());
         if(emailList.size() > 0) {
             container.putEmailList(emailList, this);
-            log.info("{} mails added in pool", emailList.size());
         }
     }
 
