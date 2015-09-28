@@ -2,7 +2,6 @@ package com.asifsid88.coupondunia.dal.configuration;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +16,7 @@ import javax.sql.DataSource;
 @Log4j2
 public class DatabaseConfiguration {
 
-    private SystemPropertyConfiguration systemPropertyConfiguration;
-
     private DataSource couponDuniaDataSource;
-
-    @Autowired
-    public void setSystemPropertyConfiguration(@Qualifier("dalEnvironment") SystemPropertyConfiguration systemPropertyConfiguration) {
-        this.systemPropertyConfiguration = systemPropertyConfiguration;
-    }
 
     @Bean
     public DataSource dataSource() {
@@ -43,9 +35,6 @@ public class DatabaseConfiguration {
 
     private DataSource initializeDataSourceFromSystemProperty() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
-        log.info("in DBConfig: from sysem property -- {}" , System.getProperty(PropertyName.JDBC_DRIVER));
-
         dataSource.setDriverClassName(System.getProperty(PropertyName.JDBC_DRIVER, PropertyDefaultValue.JDBC_DRIVER));
         dataSource.setUrl(System.getProperty(PropertyName.JDBC_URL, PropertyDefaultValue.JDBC_URL));
         dataSource.setUsername(System.getProperty(PropertyName.JDBC_USERNAME, PropertyDefaultValue.JDBC_USERNAME));

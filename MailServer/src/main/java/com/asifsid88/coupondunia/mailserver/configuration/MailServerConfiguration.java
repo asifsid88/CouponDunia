@@ -1,8 +1,6 @@
 package com.asifsid88.coupondunia.mailserver.configuration;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +14,6 @@ import java.util.Properties;
 @ComponentScan("com.asifsid88.coupondunia.mailserver")
 @Log4j2
 public class MailServerConfiguration {
-
-    private SystemPropertyConfiguration systemPropertyConfiguration;
-
-    @Autowired
-    public void setSystemPropertyConfiguration(@Qualifier("mailServerEnvironment") SystemPropertyConfiguration systemPropertyConfiguration) {
-        this.systemPropertyConfiguration = systemPropertyConfiguration;
-    }
 
     @Bean
     public JavaMailSender javaMailService() {
@@ -43,8 +34,6 @@ public class MailServerConfiguration {
 
     private Properties getMailProperties() {
         Properties properties = new Properties();
-
-        log.info("in mailserver config--> {} ", System.getProperty(PropertyName.MAIL_TRANSPORT_PROTOCOL));
         properties.setProperty(PropertyName.MAIL_TRANSPORT_PROTOCOL, System.getProperty(PropertyName.MAIL_TRANSPORT_PROTOCOL, PropertyDefaultValue.MAIL_TRANSPORT_PROTOCOL));
         properties.setProperty(PropertyName.MAIL_SMTP_AUTH, System.getProperty(PropertyName.MAIL_SMTP_AUTH, PropertyDefaultValue.MAIL_SMTP_AUTH));
         properties.setProperty(PropertyName.MAIL_SMTP_STARTTLS_ENABLE, System.getProperty(PropertyName.MAIL_SMTP_STARTTLS_ENABLE, PropertyDefaultValue.MAIL_SMTP_STARTTLS_ENABLE));

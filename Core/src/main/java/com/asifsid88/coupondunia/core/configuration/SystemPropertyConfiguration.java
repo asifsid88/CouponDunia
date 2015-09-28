@@ -12,7 +12,7 @@ import java.util.Properties;
  * Name of file should be environment name
  * -Denv=dev   will pick up properties/dev.properties file (i.e., loading dev environment)
  */
-@Component("coreEnvironment")
+@Component
 @Log4j2
 public class SystemPropertyConfiguration {
     @Value("#{systemProperties['env'] ?: 'dev'}")
