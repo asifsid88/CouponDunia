@@ -1,0 +1,10 @@
+com/asifsid88/coupondunia/dal/dao/SQLQueries.class
+com/asifsid88/coupondunia/dal/DALServiceDelegate.class
+com/asifsid88/coupondunia/dal/configuration/SystemPropertyConfiguration.class
+com/asifsid88/coupondunia/dal/configuration/DatabaseConfiguration.class
+com/asifsid88/coupondunia/dal/configuration/PropertyDefaultValue.class
+com/asifsid88/coupondunia/dal/rowmapper/EmailRowMapper.class
+com/asifsid88/coupondunia/dal/service/EmailService.class
+com/asifsid88/coupondunia/dal/dao/EmailDao.class
+com/asifsid88/coupondunia/dal/configuration/PropertyName.class
+com/asifsid88/coupondunia/dal/Main.class

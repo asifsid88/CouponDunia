@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>CouponDuniaDal</artifactId>
+    <packaging>jar</packaging>
+    <name>CouponDuniaDal</name>
+
+    <parent>
+        <artifactId>CouponDuniaTest</artifactId>
+        <groupId>com.asifsid88.coupondunia</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Internal Dependency -->
+        <dependency>
+            <groupId>com.asifsid88.coupondunia</groupId>
+            <artifactId>CouponDuniaModel</artifactId>
+        </dependency>
+    </dependencies>
+</project>

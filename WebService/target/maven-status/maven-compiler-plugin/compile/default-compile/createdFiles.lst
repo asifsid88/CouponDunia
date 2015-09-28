@@ -1,0 +1,3 @@
+com/asifsid88/coupondunia/configuration/MailWebServiceConfiguration.class
+com/asifsid88/coupondunia/resource/MailWebResource.class
+com/asifsid88/coupondunia/filter/CORSResponseFilter.class
