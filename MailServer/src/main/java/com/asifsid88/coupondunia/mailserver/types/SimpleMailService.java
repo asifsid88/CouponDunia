@@ -24,7 +24,6 @@ public class SimpleMailService implements MailClient {
 
     /**
      * @param emailList : List of Mails to sent
-     * @return : List of mails failed to sent
      */
     public void sendBulkMail(List<Email> emailList) {
         mailSender.send(MailMessage.getMailMessageList(emailList));
