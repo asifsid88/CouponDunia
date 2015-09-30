@@ -13,8 +13,8 @@ import java.util.List;
  */
 @Log4j2
 class EmailConsumerSlave implements Runnable {
-    private List<Email> emailList;
-    private MailServerDelegate mailServer;
+    private final List<Email> emailList;
+    private final MailServerDelegate mailServer;
 
     private Thread thread;
 

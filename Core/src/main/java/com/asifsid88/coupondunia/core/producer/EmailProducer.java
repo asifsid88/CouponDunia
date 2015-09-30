@@ -31,8 +31,8 @@ public class EmailProducer implements EmailContainerObserver, Runnable {
     /*
     Container which is populated from DB. Common with Consumer
      */
-    private EmailContainer container;
-    private DALServiceDelegate dalService;
+    private final EmailContainer container;
+    private final DALServiceDelegate dalService;
 
     @Autowired
     public EmailProducer(EmailContainer container, DALServiceDelegate dalService) {

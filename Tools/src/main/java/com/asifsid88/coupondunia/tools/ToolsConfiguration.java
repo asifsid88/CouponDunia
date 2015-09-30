@@ -24,7 +24,6 @@ public class ToolsConfiguration {
     @Autowired
     private SystemPropertyConfiguration systemPropertyConfiguration;
 
-
     @PostConstruct
     public void logEnvironment() {
         log.info("Start using ToolsConfiguration");

@@ -34,8 +34,8 @@ import java.util.List;
 @Log4j2
 public class EmailConsumerMaster implements EmailContainerObserver {
 
-    private EmailContainer container;
-    private MailServerDelegate mailServer;
+    private final EmailContainer container;
+    private final MailServerDelegate mailServer;
 
     @Autowired
     public EmailConsumerMaster(EmailContainer container, MailServerDelegate mailServer) {

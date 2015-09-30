@@ -26,8 +26,12 @@ import java.util.List;
 @Log4j2
 public class EmailDao implements EmailService {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public EmailDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Email> getEmail() {
         List<Email> emailList = Collections.EMPTY_LIST;

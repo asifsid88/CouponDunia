@@ -19,8 +19,12 @@ public class CreateMail {
     @Value("#{systemProperties['toEmail'] ?: 'asif.sid88@gmail.com'}")
     private String toEmail;
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public CreateMail(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void insertMail() {
         try {

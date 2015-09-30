@@ -28,8 +28,12 @@ import java.util.List;
 @Log4j2
 public class SimpleMailService implements MailClient {
 
+    private final MailSender mailSender;
+
     @Autowired
-    private MailSender mailSender;
+    public SimpleMailService(MailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     /**
      * Send single mail
@@ -53,7 +57,7 @@ public class SimpleMailService implements MailClient {
             mailSender.send(MailMessage.getMailMessageList(emailList));
             log.info("{} mails sent", emailList.size());
         } catch(Exception e) {
-            log.error("Exception occurred while sending {} mails: Exception: ", emailList.size(), e);
+            //log.error("Exception occurred while sending {} mails: Exception: ", emailList.size(), e);
         }
     }
 }

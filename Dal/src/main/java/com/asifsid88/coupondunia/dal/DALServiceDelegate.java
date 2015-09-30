@@ -19,11 +19,11 @@ import java.util.List;
 @Service
 public final class DALServiceDelegate {
 
-    private static EmailService emailService;
+    private final EmailService emailService;
 
     @Autowired
-    public void setEmailService(@Qualifier("emailService") EmailService emailService) {
-        DALServiceDelegate.emailService = emailService;
+    public DALServiceDelegate(@Qualifier("emailService") EmailService emailService) {
+        this.emailService = emailService;
     }
 
     public List<Email> getEmail() {

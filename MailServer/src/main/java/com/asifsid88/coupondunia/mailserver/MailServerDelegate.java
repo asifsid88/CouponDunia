@@ -19,11 +19,11 @@ import java.util.List;
 @Service
 public class MailServerDelegate {
 
-    private static MailClient simpleMailService;
+    private final MailClient simpleMailService;
 
     @Autowired
-    public void setMailClient(@Qualifier("simpleMailService") MailClient mailClient) {
-        MailServerDelegate.simpleMailService = mailClient;
+    public MailServerDelegate(@Qualifier("simpleMailService") MailClient simpleMailService) {
+        this.simpleMailService = simpleMailService;
     }
 
     public void sendMail(Email email) {
