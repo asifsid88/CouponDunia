@@ -40,8 +40,7 @@ send mail using MailServer services
 
 `EmailProducer` is a continuously running thread which fetches data from database at a regular interval `configurable`. 
 As soon as data is fed into the container and 'if consumer is not already' feeding on container then it gives a signal 
-which invokes `EmailConsumerMaster` which in turn creates `x` number of slave threads (depending on capacity each thread can
-take and also on current size of comtainer) to send mails. Once each slaves have done their job it is destroyed and Master is 
+which invokes `EmailConsumerMaster` which in turn creates `x` number of slave threads (depending on capacity of each thread take and also on current size of container) to send mails. Once each slaves have done their job it is destroyed and Master is 
 terminated. Number of emails each thread can sent is also configurable
 
 
