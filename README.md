@@ -58,6 +58,8 @@ How to run
 3. Enable Annotation processing (As lombok is used in project)  
     If IDE is IntelliJ then Go to Preferences -> Type `enable annotations` -> Check `enable annotations processing` checkbox
 
+![Enable Annotation Processing] (enable_annotation_processing.png)
+
 
 Set up database
 ---------------
@@ -89,8 +91,12 @@ How to create dummy emails
 7. Select `Tools` as the classpath module
 8. Run the configuration
 
+
 By default, it will create 1000 mails in your database table `EmailQueue`  
 Run `SELECT * FROM EmailQueue` to verify values
+
+![Create Dummy Email Configuration](/CreateDummyMail_configuration.png)
+
 
 How to run Core System
 ----------------------
@@ -104,6 +110,8 @@ How to run Core System
 8. Run the configuration
 
 Assuming your database has dummy mails to sent
+
+![Run Core System Configuration] (RunCouponDuniaSystem_configuration.png)
 
 Insert dummy mails via a script
 -------------------------------
