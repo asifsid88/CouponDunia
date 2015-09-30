@@ -69,6 +69,8 @@ Set up database
 Username: coupondunia    
 Password: (0uPoNDuN!A  
 ```
+3. Import sql scripts `couponduniadb_scripts.sql`
+
 
 You can use any DB name and any password, but then you need to modify `properties` file to pick up correct configuration
 
@@ -85,7 +87,7 @@ How to create dummy emails
 1. You need to run `Tools` Module
 2. Set up database
 3. Select your corresponding database (say `couponduniadb')
-4. Run `sql_structure_scripts.sql` to create table
+4. Import `couponduniadb_scripts.sql` to set up table and insert values
 5. Set up environment values (by default `dev.properties` is loaded)
 6. Create application configuration with Main Class as `com.asifsid88.coupondunia.tools.CreateDummyMail`
 7. Select `Tools` as the classpath module
@@ -103,7 +105,7 @@ How to run Core System
 1. You need to run `Core` Module
 2. Set up database
 3. Select your corresponding database (say `couponduniadb`)
-4. Run `sql_structure_scripts.sql` to create table
+4. Import `couponduniadb_scripts.sql` to set up table and insert values
 5. Set up environment values (by default `dev.properties` is loaded)
 6. Create application configuration with Main Class as `com.asifsid88.coupondunia.core.RunCouponDuniaSystem`
 7. Select `Core` as the classpath module
@@ -113,12 +115,6 @@ Assuming your database has dummy mails to sent
 
 ![Run Core System Configuration] (RunCouponDuniaSystem_configuration.png)
 
-Insert dummy mails via a script
--------------------------------
-1. Set up database
-2. Select your corresponding database (say `couponduniadb`)
-4. Run `sql_structure_scripts.sql` to create table
-5. Run `sql_data_scripts.sql` to insert dummy values in `EmailQueue` table
 
 
 
