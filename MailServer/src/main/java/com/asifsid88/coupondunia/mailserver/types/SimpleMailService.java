@@ -31,6 +31,10 @@ public class SimpleMailService implements MailClient {
     @Autowired
     private MailSender mailSender;
 
+    /**
+     * Send single mail
+     * @param email Mail object to send
+     */
     public void sendMail(Email email) {
         try {
             mailSender.send(MailMessage.getMailMessage(email));
@@ -41,6 +45,7 @@ public class SimpleMailService implements MailClient {
     }
 
     /**
+     * Send bulk mails
      * @param emailList : List of Mails to sent
      */
     public void sendBulkMail(List<Email> emailList) {

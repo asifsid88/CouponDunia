@@ -6,6 +6,11 @@ import org.springframework.mail.SimpleMailMessage;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A helper class used to create a MailMessage Object
+ * This can be enhanced further to use strategy pattern so that based on different types of Mails (or objects) we need to sent
+ * we can have different strategies (say templates)
+ */
 public class MailMessage {
 
     public static SimpleMailMessage[] getMailMessageList(List<Email> emailList) {

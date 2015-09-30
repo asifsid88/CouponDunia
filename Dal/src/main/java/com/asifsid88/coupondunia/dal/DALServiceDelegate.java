@@ -8,6 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Facade Layer which is exposed to the client to use DAL services
+ *
+ * Rather than exposing every services to client, it is a good idea to have Facade layer (delegator)
+ * All the services will be present in this layer so the client has to inject or use only one class to use all services
+ * This also gives us privilege to increase or decrease any number of services (at any time) without affecting or requiring any changes
+ * from client's end
+ */
 @Service
 public final class DALServiceDelegate {
 
