@@ -1,5 +1,5 @@
 # CouponDunia
-Coupon Dunia Test. The scope of this system is to read mail details from database table and send 
+**Coupon Dunia Test** The scope of this system is to read mail details from database table and send 
 emails in bulk over SMTP protocol. To boost the process, send bulk mails in parallel
 
 
