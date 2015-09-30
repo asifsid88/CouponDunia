@@ -1,4 +1,4 @@
-package com.asifsid88.coupondunia;
+package com.asifsid88.coupondunia.dal;
 
 import com.asifsid88.coupondunia.model.Email;
 

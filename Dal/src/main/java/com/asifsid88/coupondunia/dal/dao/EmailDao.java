@@ -40,7 +40,7 @@ public class EmailDao implements EmailService {
             /*
             Delete those emails from db
              */
-            if(emailList.size() >0) {
+            if(emailList.size() > 0) {
                 jdbcTemplate.update(SQLQueries.deleteEmailsById(getIds(emailList)));
             }
         } catch(Exception e) {

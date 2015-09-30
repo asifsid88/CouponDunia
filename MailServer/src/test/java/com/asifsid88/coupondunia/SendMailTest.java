@@ -8,17 +8,14 @@ import org.junit.Test;
 
 import java.util.List;
 
-/**
- * TODO: Complete Unit Test
- */
 public class SendMailTest {
 
     private List<Email> emailList;
     private SimpleMailService simpleMailService;
 
     @Before
-    public void before() {
-        emailList = EmailHelper.getEmailList();
+    public void setUp() {
+        emailList = EmailHelper.getEmailList(10);
     }
 
     @Test
