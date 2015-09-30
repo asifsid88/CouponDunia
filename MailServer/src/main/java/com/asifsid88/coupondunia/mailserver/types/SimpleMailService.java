@@ -57,7 +57,7 @@ public class SimpleMailService implements MailClient {
             mailSender.send(MailMessage.getMailMessageList(emailList));
             log.info("{} mails sent", emailList.size());
         } catch(Exception e) {
-            //log.error("Exception occurred while sending {} mails: Exception: ", emailList.size(), e);
+            log.error("Exception occurred while sending {} mails: Exception: ", emailList.size(), e);
         }
     }
 }
