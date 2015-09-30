@@ -12,6 +12,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * CoreSystem Configuration:
+ * It is dependent upon DAL (Data Access Layer) and Mail Server. Hence it is using DatabaseConfiguration and MailServerConfiguration
+ *
+ * It uses SystemPropertyConfiguration to load system properties which is further used by DAL and MailServer to configure themselves
+ */
 @Import({DatabaseConfiguration.class, MailServerConfiguration.class})
 @Configuration
 @ComponentScan("com.asifsid88.coupondunia.core")
@@ -21,8 +27,14 @@ public class CoreSystemConfiguration {
     @Autowired
     private SystemPropertyConfiguration systemPropertyConfiguration;
 
+    /*
+    Used to create Thread using Spring
+     */
     @Bean
     public ThreadPoolTaskExecutor taskExecutor() {
+        /*
+        Configure this as per the business requirement and system configuration
+         */
         ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
         pool.setCorePoolSize(5);
         pool.setMaxPoolSize(10);

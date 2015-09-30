@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class EmailContainer {
 
     /*
-    BlockingQueue is used to ensure `concurrency`
+    BlockingQueue is used to ensure `concurrency` and many other feature (solves producer-consumer problem)
      */
     private BlockingQueue<Email> emailPool = new LinkedBlockingDeque<Email>();
 

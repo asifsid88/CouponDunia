@@ -38,6 +38,10 @@ public class EmailProducer implements EmailContainerObserver, Runnable {
     public EmailProducer(EmailContainer container, DALServiceDelegate dalService) {
         this.container = container;
         this.dalService = dalService;
+
+        /*
+        Register producer to container
+         */
         this.container.register(this);
     }
 

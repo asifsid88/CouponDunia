@@ -41,6 +41,10 @@ public class EmailConsumerMaster implements EmailContainerObserver {
     public EmailConsumerMaster(EmailContainer container, MailServerDelegate mailServer) {
         this.container = container;
         this.mailServer = mailServer;
+
+        /*
+        Register consumer to container
+         */
         this.container.register(this);
     }
 

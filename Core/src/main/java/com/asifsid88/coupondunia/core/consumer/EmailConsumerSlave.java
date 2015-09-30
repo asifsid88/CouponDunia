@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * Responsible for sending mail
  * It uses MailServer Client and sends mail
+ * It is created by EmailConsumerMaster
  */
 @Log4j2
-public class EmailConsumerSlave implements Runnable {
+class EmailConsumerSlave implements Runnable {
     private List<Email> emailList;
     private MailServerDelegate mailServer;
 
