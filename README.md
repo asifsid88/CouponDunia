@@ -68,7 +68,7 @@ Set up database
 Username: coupondunia    
 Password: (0uPoNDuN!A  
 ```
-Grand all privileges to this user
+Grand all privileges to this user  
 3. Import sql scripts `couponduniadb_scripts.sql`
 
 
