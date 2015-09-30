@@ -31,6 +31,9 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  * Producer is a continuous running thread, which looks for new values in DB. As it finds it populates the container
  * Consumer(Master) is not a thread and it is triggered only when there is a new value available. Then this Consumer(Master)
  * creates as many thread as required to sent (empty container) mails depending upon configuration
+ *
+ * NOTE: Through-out the system, exception could have been better handled. System should have custom exceptions based on our
+ * requirements
  */
 @Log4j2
 public class RunCouponDuniaSystem {
