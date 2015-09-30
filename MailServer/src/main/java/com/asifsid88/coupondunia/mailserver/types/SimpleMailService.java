@@ -18,15 +18,23 @@ public class SimpleMailService implements MailClient {
     private MailSender mailSender;
 
     public void sendMail(Email email) {
-        mailSender.send(MailMessage.getMailMessage(email));
-        log.info("1 mail sent");
+        try {
+            mailSender.send(MailMessage.getMailMessage(email));
+            log.info("1 mail sent");
+        } catch(Exception e) {
+            log.error("Exception occurred while sending single mail: Exception: ", e);
+        }
     }
 
     /**
      * @param emailList : List of Mails to sent
      */
     public void sendBulkMail(List<Email> emailList) {
-        mailSender.send(MailMessage.getMailMessageList(emailList));
-        log.info("{} mails sent", emailList.size());
+        try {
+            mailSender.send(MailMessage.getMailMessageList(emailList));
+            log.info("{} mails sent", emailList.size());
+        } catch(Exception e) {
+            log.error("Exception occurred while sending {} mails: Exception: ", emailList.size(), e);
+        }
     }
 }
