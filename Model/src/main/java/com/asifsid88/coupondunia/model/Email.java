@@ -2,6 +2,10 @@ package com.asifsid88.coupondunia.model;
 
 import lombok.Data;
 
+/**
+ * This is a model which is used across system.
+ * Having integrated models into every module prevent us from code re-usability and leads to many duplication and difficult system management
+ */
 @Data
 public class Email {
     private long id;

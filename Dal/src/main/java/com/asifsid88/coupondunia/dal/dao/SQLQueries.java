@@ -4,6 +4,10 @@ import java.util.List;
 
 /**
  * SQL Queries: Could move this into Stored Proc:
+ *
+ * This could have been much better, in fact can be totally removed and moved into Stored Procedures
+ * Moreover, the callee could have changed to Callable Statement, or we can also integrate ORM (viz., Hibernate) to handle
+ * things
  */
 public final class SQLQueries {
     public static String getEmail() {

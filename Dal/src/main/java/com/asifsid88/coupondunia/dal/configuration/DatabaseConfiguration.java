@@ -11,6 +11,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+/**
+ * Database Configuration:
+ * The configurations are picked up from Environment variables. So the client who is using DataAccessLayer (DAL) should have
+ * mechanism to feed these values (in web application can be fed using `Environment` tag in web.xml
+ * in stand-alone application or fat-jar, we can feed using properties file or any other config manager or can also be
+ * supplied as -DvariableName
+ *
+ */
 @Configuration
 @ComponentScan("com.asifsid88.coupondunia.dal")
 @Log4j2
@@ -33,6 +41,9 @@ public class DatabaseConfiguration {
         couponDuniaDataSource = initializeDataSourceFromSystemProperty();
     }
 
+    /*
+    Initialize datasource to be used by system
+     */
     private DataSource initializeDataSourceFromSystemProperty() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(System.getProperty(PropertyName.JDBC_DRIVER, PropertyDefaultValue.JDBC_DRIVER));

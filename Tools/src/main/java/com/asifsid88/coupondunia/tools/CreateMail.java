@@ -23,10 +23,18 @@ public class CreateMail {
     private JdbcTemplate jdbcTemplate;
 
     public void insertMail() {
-        jdbcTemplate.batchUpdate(sqlQuery());
-        log.info("Mail created");
+        try {
+            jdbcTemplate.batchUpdate(sqlQuery());
+            log.info("Mail created");
+        } catch(Exception e) {
+            log.error("Exception occurred while creating dummy mails, Exception: ", e);
+        }
     }
 
+    /*
+    SQL Insert statement to fire
+    The idea is to just populate the database with dummy values
+     */
     private String[] sqlQuery() {
         String[] query = new String[numberOfMail];
 
