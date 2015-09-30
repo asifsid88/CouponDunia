@@ -52,7 +52,7 @@ It creates `n` number of dummy mails in database (configurable)
 
 How to run
 ----------
-1. Clone the code from github [Coupon Dunia repository](git@github.com:asifsid88/CouponDunia.git)
+1. Clone the code from github [Coupon Dunia repository](https://github.com/asifsid88/CouponDunia.git)
 2. Open your project in your favourite IDE 
 3. Enable Annotation processing (As lombok is used in project)  
     If IDE is IntelliJ then Go to Preferences -> Type `enable annotations` -> Check `enable annotations processing` checkbox
@@ -68,6 +68,7 @@ Set up database
 Username: coupondunia    
 Password: (0uPoNDuN!A  
 ```
+Grand all privileges to this user
 3. Import sql scripts `couponduniadb_scripts.sql`
 
 
