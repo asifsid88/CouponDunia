@@ -51,6 +51,59 @@ This module is independent. Purpose of this module is to create `dummy mails` in
 It creates `n` number of dummy mails in database (configurable)
 
 
+How to run
+----------
+1. Clone the code from github [Coupon Dunia repository](git@github.com:asifsid88/CouponDunia.git)
+2. Open your project in your favourite IDE 
+3. Enable Annotation processing (As lombok is used in project)  
+    If IDE is IntelliJ then Go to Preferences -> Type `enable annotations` -> Check `enable annotations processing` checkbox
+
+
+Set up database
+---------------
+1. Create a database say `couponduniadb`
+2. Add user to it  
+```
+Username: coupondunia    
+Password: (0uPoNDuN!A  
+```
+
+You can use any DB name and any password, but then you need to modify `properties` file to pick up correct configuration
+
+Location of properties file
+---------------------------
+Depending upon the environment, corresponding properties files are created. For the simple purpose, say `dev` environment is being used. So all your configuration will be picked up from `dev.properties`  
+Properties files are placed in `resources` folder. Open it and edit corresponding values
+
+If you want to run any other environment, then pass `-Denv=environmentName` as a system properties value. Make sure respective `environmentName.properties` file exists in `resources->properties` folder    
+**Example:** If you want to load `prod` environment. Then create `prod.properties` file in `resources->properties` folder and while running your application provide VM argument as `-Denv=prod`
+
+How to create dummy emails
+--------------------------
+1. You need to run `Tools` Module
+2. Set up database
+3. Select your corresponding database (say `couponduniadb')
+4. Run `sql_structure_scripts.sql` to create table
+5. Set up environment values (by default `dev.properties` is loaded)
+6. Create application configuration with Main Class as `com.asifsid88.coupondunia.tools.CreateDummyMail`
+7. Select `Tools` as the classpath module
+8. Run the configuration
+
+By default, it will create 1000 mails in your database table `EmailQueue`  
+Run `SELECT * FROM EmailQueue` to verify values
+
+How to run Core System
+----------------------
+1. You need to run `Core` Module
+2. Set up database
+3. Select your corresponding database (say `couponduniadb`0
+4. Run `sql_structure_scripts.sql` to create table
+5. Set up environment values (by default `dev.properties` is loaded)
+6. Create application configuration with Main Class as `com.asifsid88.coupondunia.core.RunCouponDuniaSystem`
+7. Select `Core` as the classpath module
+8. Run the configuration
+
+Assuming your database has dummy mails to sent
 
 
 
