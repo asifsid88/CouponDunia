@@ -96,7 +96,7 @@ How to run Core System
 ----------------------
 1. You need to run `Core` Module
 2. Set up database
-3. Select your corresponding database (say `couponduniadb`0
+3. Select your corresponding database (say `couponduniadb`)
 4. Run `sql_structure_scripts.sql` to create table
 5. Set up environment values (by default `dev.properties` is loaded)
 6. Create application configuration with Main Class as `com.asifsid88.coupondunia.core.RunCouponDuniaSystem`
@@ -104,6 +104,14 @@ How to run Core System
 8. Run the configuration
 
 Assuming your database has dummy mails to sent
+
+Insert dummy mails via a script
+-------------------------------
+1. Set up database
+2. Select your corresponding database (say `couponduniadb`)
+4. Run `sql_structure_scripts.sql` to create table
+5. Run `sql_data_scripts.sql` to insert dummy values in `EmailQueue` table
+
 
 
 
