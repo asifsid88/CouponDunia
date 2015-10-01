@@ -59,6 +59,8 @@ How to run
     If IDE is IntelliJ then Go to Preferences -> Type `enable annotations` -> Check `enable annotations processing` checkbox
 5. Go to your folder `CouponDuniaTest` and run `mvn clean install`. This will compile and run all the test cases and will create respective `.jar` files  
 [Maven Build LifeCycle for reference](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
+
+
 ![Enable Annotation Processing] (enable_annotation_processing.png)
 
 
