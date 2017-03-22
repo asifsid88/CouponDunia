@@ -61,7 +61,7 @@ How to run
 [Maven Build LifeCycle for reference](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
 
 
-![Enable Annotation Processing] (enable_annotation_processing.png)
+![Enable Annotation Processing](/enable_annotation_processing.png)
 
 
 Set up database
@@ -117,7 +117,7 @@ How to run Core System
 
 Assuming your database has dummy mails to sent
 
-![Run Core System Configuration] (RunCouponDuniaSystem_configuration.png)
+![Run Core System Configuration](/RunCouponDuniaSystem_configuration.png)
 
 
 
